@@ -1,4 +1,4 @@
-const { readFile } = require('fs')
+const dayRouter = require('./routes/days')
 const module1 = require('./module1')
 
 // console.log(module1)
@@ -16,13 +16,12 @@ const app = express()
 // setup the view engine 
 app.set('view engine', 'ejs')
 
+// make the app use the right router
+app.use('/days', dayRouter)
+
 // '/' is the url path,
 app.get('/', (request, response) => { { 
-    
-    // readFile('./home.html', 'utf8', (err, html) => {
-    //     if (err) {
-    //         response.status(500).send('sorry, out of order')
-    //     }
+
     // // 4 options to send a response:
     //     // response.send(html)
     //    // response.send("express server running")
@@ -31,7 +30,18 @@ app.get('/', (request, response) => { {
     // })
 
     // or just use the ejs view engine with render  
-    response.render('index1')
+    const days = [{
+        name: 'Monday',
+        createdAt: new Date(),
+        description: 'Test description'
+    },
+    { 
+        name: 'Tuesday',
+        createdAt:  new Date(),
+        description: 'Test description'
+    } ]
+
+    response.render('index1', { days: days } )
 
 }}
 )
