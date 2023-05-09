@@ -1,5 +1,13 @@
+// create an app using express
+const express = require('express')
+const app = express()
+
+//set up database (not working)
+// const mongoose = require('mongoose')
+// mongoose.connect('mongodb://localhost/codingprogressdb', { useNewUrlParser: true, useUnifiedTopology: true })
+
+
 const dayRouter = require('./routes/days')
-const module1 = require('./module1')
 
 // console.log(module1)
 // console.log('hello world')
@@ -9,9 +17,7 @@ const module1 = require('./module1')
 // console.log('*************2*********************')
 // console.log(process.env.USER)
 
-// create an app using express
-const express = require('express')
-const app = express()
+
 
 // setup the view engine 
 app.set('view engine', 'ejs')
@@ -41,7 +47,7 @@ app.get('/', (request, response) => { {
         description: 'Test description'
     } ]
 
-    response.render('index1', { days: days } )
+    response.render('days/index1', { days: days } )
 
 }}
 )
