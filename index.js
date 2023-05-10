@@ -2,6 +2,8 @@
 const express = require('express')
 const app = express()
 
+const Day = require('./models/day')
+
 // set up database 
 const mongoose = require('mongoose')
 // username: benhebert
@@ -32,7 +34,7 @@ app.use(express.urlencoded({ extended: false }))
 
 
 // '/' is the url path,
-app.get('/', (request, response) => { { 
+app.get('/', async (request, response) => { { 
 
     // // 4 options to send a response:
     //     // response.send(html)
@@ -42,16 +44,11 @@ app.get('/', (request, response) => { {
     // })
 
     //    or just use the ejs view engine with render  
-    const days = [{
-        name: 'Monday',
-        createdAt: new Date(),
-        description: 'Test description'
-    },
-    { 
-        name: 'Tuesday',
-        createdAt:  new Date(),
-        description: 'Test description'
-    } ]
+
+    // the find() function just gets all the days from the database
+    const days = await Day.find().sort(
+        { createdAt: 'desc' }
+    )
 
     response.render('days/index1', { days: days } )
 

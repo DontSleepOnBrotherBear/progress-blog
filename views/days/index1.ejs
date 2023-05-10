@@ -10,7 +10,6 @@
 </head>
 <body>
     <h1>Ben's coding progress</h1>
-    <h1><%= days %></h1>
 
     <div class="container">
         <h1 class="'mb-4"> Coding progress </h1>
@@ -26,6 +25,7 @@
                     <div class="card-text mb-2">
                         <%= day.description %>
                     </div>
+                    <a href="days/<%= day.id %>" class="btn btn-primary">Read More</a>
                 </div>
      
             </div>
