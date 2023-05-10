@@ -46,4 +46,5 @@ daySchema.pre('validate', function(next) {
     next()
 
 })
+
 module.exports = mongoose.model('Day', daySchema)
