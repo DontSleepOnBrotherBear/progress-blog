@@ -1,14 +1,34 @@
 const express = require('express')
+const Day = require('../models/day')
 const router = express.Router() 
 
 // Note that even though its '/' here, it still the '/days' route because of the "app.use('/days', dayRouter)"" in index.js
 router.get('/new', (request, response) => {
-    response.render('days/new')
+    response.render('days/new', {day: new Day()})
 })
 
+router.get('/:id', async (request, response) => {
+    const day = await Day.findById(request.params.id)
+    if (day == null) response.redirect('/')
+    response.render('days/show', { day: day })
 
-router.post('/', (request, response) => {
+})
 
+router.post('/', async (request, response) => {
+    let day = new Day({
+        name: request.body.name,
+        description: request.body.description,
+        markdown: request.body.markdown
+    })
+    try {
+       day = await day.save()
+       response.redirect(`/days/${day.id}`)
+
+    } catch (e) {
+        console.log(e)
+        response.render('days/new', {day: day})
+
+    }
     
 })
 

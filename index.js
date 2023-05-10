@@ -2,14 +2,18 @@
 const express = require('express')
 const app = express()
 
-//set up database (not working)
-// const mongoose = require('mongoose')
-// mongoose.connect('mongodb://localhost/codingprogressdb', { useNewUrlParser: true, useUnifiedTopology: true })
+// set up database 
+const mongoose = require('mongoose')
+// username: benhebert
+// cluster name: codingprogresscluster
+// email for mongodb account: benhebert9917@gmail.com
+// password: NANhR571za0hAL7o
+mongoose.connect('mongodb+srv://benhebert:NANhR571za0hAL7o@codingprogresscluster.lbdg57m.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
 
 
 const dayRouter = require('./routes/days')
 
-// console.log(module1)
+// Stuff that you can consol.log to see what is going on: 
 // console.log('hello world')
 // console.log(process)
 // console.log('*************1*********************')
@@ -22,8 +26,10 @@ const dayRouter = require('./routes/days')
 // setup the view engine 
 app.set('view engine', 'ejs')
 
-// make the app use the right router
-app.use('/days', dayRouter)
+
+// this is to tell express how to access the user input from the new Day form (needs to come before the app.use(routers)
+app.use(express.urlencoded({ extended: false }))
+
 
 // '/' is the url path,
 app.get('/', (request, response) => { { 
@@ -35,7 +41,7 @@ app.get('/', (request, response) => { {
     //    // response.status(500).send('sorry, out of order')
     // })
 
-    // or just use the ejs view engine with render  
+    //    or just use the ejs view engine with render  
     const days = [{
         name: 'Monday',
         createdAt: new Date(),
@@ -51,5 +57,8 @@ app.get('/', (request, response) => { {
 
 }}
 )
+
+// make the app use the right router
+app.use('/days', dayRouter)
 
 app.listen(process.env.PORT || 3000, () => console.log('App available on http://localhost:3000'))

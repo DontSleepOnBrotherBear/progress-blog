@@ -1,18 +1,18 @@
 <div class="form-group">
     <label for="name">Name</label>
-    <input required type="text" name="name" id="name" class="form-control">
+    <input required value="<%= day.name%>" type="text" name="name" id="name" class="form-control">
 
 </div>
 
 <div class="form-group">
     <label for="name">Description</label>
-    <textarea name="description" id="description" class="form-control"></textarea>
+    <textarea name="description" id="description" class="form-control"><%= day.description %></textarea>
 
 </div>
 
 <div class="form-group">
     <label for="markdown">Markdown</label>
-    <textarea name="markdown" id="markdown" class="form-control"></textarea>
+    <textarea required name="markdown" id="markdown" class="form-control"><%= day.markdown %></textarea>
 
 </div>
 
