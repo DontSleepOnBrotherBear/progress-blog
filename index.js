@@ -4,13 +4,15 @@ const app = express()
 
 const Day = require('./models/day')
 
+const methodOverride = require('method-override')   
+
 // set up database 
 const mongoose = require('mongoose')
 // username: benhebert
 // cluster name: codingprogresscluster
 // email for mongodb account: benhebert9917@gmail.com
 // password: NANhR571za0hAL7o
-mongoose.connect('mongodb+srv://benhebert:NANhR571za0hAL7o@codingprogresscluster.lbdg57m.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb+srv://benhebert:NANhR571za0hAL7o@codingprogresscluster.lbdg57m.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true})
 
 
 const dayRouter = require('./routes/days')
@@ -32,6 +34,7 @@ app.set('view engine', 'ejs')
 // this is to tell express how to access the user input from the new Day form (needs to come before the app.use(routers)
 app.use(express.urlencoded({ extended: false }))
 
+app.use(methodOverride('_method'))
 
 // '/' is the url path,
 app.get('/', async (request, response) => { { 

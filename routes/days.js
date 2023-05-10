@@ -7,8 +7,10 @@ router.get('/new', (request, response) => {
     response.render('days/new', {day: new Day()})
 })
 
-router.get('/:id', async (request, response) => {
-    const day = await Day.findById(request.params.id)
+router.get('/:slug', async (request, response) => {
+    const day = await Day.findOne(
+        { slug: request.params.slug }
+        )
     if (day == null) response.redirect('/')
     response.render('days/show', { day: day })
 
@@ -22,7 +24,7 @@ router.post('/', async (request, response) => {
     })
     try {
        day = await day.save()
-       response.redirect(`/days/${day.id}`)
+       response.redirect(`/days/${day.slug}`)
 
     } catch (e) {
         console.log(e)
@@ -30,6 +32,11 @@ router.post('/', async (request, response) => {
 
     }
     
+})
+
+router.delete('/:id', async (request, response) => {
+    await Day.findByIdAndDelete(request.params.id)
+    response.redirect('/')
 })
 
 

@@ -25,7 +25,11 @@
                     <div class="card-text mb-2">
                         <%= day.description %>
                     </div>
-                    <a href="days/<%= day.id %>" class="btn btn-primary">Read More</a>
+                    <a href="days/<%= day.slug %>" class="btn btn-primary">Read More</a>
+
+                    <form action="/days/<%= day.id %>?_method=DELETE" method="POST" class="d-inline">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
                 </div>
      
             </div>
