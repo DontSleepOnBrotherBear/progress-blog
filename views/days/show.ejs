@@ -13,12 +13,18 @@
 
 
     <div class="container">
-        <h1 class="mb-4">YEET!</h1>
         <h1 class="mb-1"><%= day.name %></h1>
         <div class="text-muted mb-2"><%= day.createdAt.toLocaleDateString() %></div>
     </div>
-    <a href="/" class="btn btn-secondary">All days</a>
-    <a href="/days/edit/<%= day.id %>" class="btn btn-info">Edit</a>
+    <a href="/" class="btn btn-secondary">Home</a>
+
+
+    <!-- commented out because I don't want to set up authentificatio before going live in production -->
+    <!-- <a href="/days/edit/<%= day.id %>" class="btn btn-info">Edit</a> -->
+
+
+
+
     <div>
         <%- day.sanitizedHtml %>
     </div>
