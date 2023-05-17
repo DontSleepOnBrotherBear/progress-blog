@@ -5,23 +5,78 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <title>Ben's coding progress</title>
-    
 </head>
 <body>
-    <h1>Ben's coding progress</h1>
 
-
-    <div class="container">
-        <h1 class="mb-1"><%= day.name %></h1>
-        <div class="text-muted mb-2"><%= day.createdAt.toLocaleDateString() %></div>
+    <div class="d-flex flex-row">
+        <div class="container">
+            <a href="heebs.info"><h1 class="mb-1"><%= day.name %></h1></a>
+        </div>
+        <div class="px-2 pt-2">
+            <a href="/" class="btn btn-secondary">Home</a>
+        </div>
     </div>
-    <a href="/" class="btn btn-secondary">Home</a>
 
 
-    <!-- commented out because I don't want to set up authentificatio before going live in production -->
+    <!-- commented out because I don't want to set up authentification before going live in production -->
     <!-- <a href="/days/edit/<%= day.id %>" class="btn btn-info">Edit</a> -->
 
+
+    <div class="my-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+
+                    <div class="card text-center">
+                        Framework
+                    </div>
+    
+                    <div class="card text-center bg-danger mt-4">
+                        logo
+                    </div>
+                    
+                </div>
+
+                <div class="col-sm">
+
+                    <div class="card text-center">
+                        Database
+                    </div>
+
+                    <div class="card text-center bg-danger mt-4">
+                        logo
+                    </div>
+
+                </div>
+
+                <div class="col-sm">
+
+                    <div class="card text-center">
+                        Styling
+                    </div>
+
+                    <div class="card text-center bg-danger mt-4">
+                        logo
+                    </div>
+
+                </div>
+                <div class="col-sm">
+
+                    <div class="card text-center">
+                        Host Server
+                    </div>
+
+                    <div class="card text-center bg-danger mt-4">
+                        logo
+                    </div>
+
+                </div>
+            </div>
+            
+        </div>
+
+        
+    </div>
 
 
 

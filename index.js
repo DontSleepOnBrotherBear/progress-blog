@@ -25,6 +25,8 @@ app.use(express.urlencoded({ extended: false }))
 
 app.use(methodOverride('_method'))
 
+//force https
+// NEED TO TURN OFF FOR DEV AND ON FOR PROD
 app.use(requireHTTPS)
 function requireHTTPS(req, res, next) {
     // The 'x-forwarded-proto' check is for Heroku
